@@ -1,0 +1,4 @@
+﻿  Module.ixx
+C:\Users\рбт\source\repos\Project4\Project4\Module.ixx(1,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+C:\Users\рбт\source\repos\Project4\Project4\Module.ixx(12,24): warning C4305: инициализация: усечение из "double" в "float"
+  Project4.vcxproj -> C:\Users\рбт\source\repos\Project4\Debug\Project4.exe
