@@ -1,0 +1,13 @@
+#include <iostream>;
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "rus");
+	int a, b, A, B;
+	cout << " Введите количество мегабайт чтобы их перевести в килобайты ";
+	scanf_s("%d", &a);
+
+	b = a / 1024;
+
+
+	printf("\n\nОтветы\n\n Перевод в килобайты %d\n\n", b);
+}
