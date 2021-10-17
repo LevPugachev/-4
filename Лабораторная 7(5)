@@ -1,0 +1,22 @@
+include <iostream>;
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "rus");
+	int a, b;
+	float x;
+
+	cout << " Введите значение А(А не равно 0) для решения линейного уравнения ";
+	scanf_s("%d", &a);
+	cout << " Введите значение В для решения линейного уравнения ";
+	scanf_s("%d", &b);
+
+	if ((a > 0) or (a < 0)) {
+		x = (float)(-b) / a;
+	}
+	while (a == 0) {
+		cout << " А ровно 0, поэтому нет решения\n";
+		return 0;
+	}
+
+	printf("\n\n Ответы\n\n X = %f\n", x);
+}
