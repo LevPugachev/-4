@@ -1,0 +1,17 @@
+#include <iostream>;
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "rus");
+	int gr, gr1;
+	const float pi = 3.14;
+	float rad, rad1;
+	cout << "Введите значение угла(от 0 до 360 градусов), чтобы найти его значение в радианах ";
+	scanf_s("%d", &gr);
+	cout << "Введите значение угла(в радианах 0 < α < 2·π), чтобы найти его значение в градусах";
+	scanf_s("%f", &rad1);
+
+	rad = (pi * gr) / 180;
+	gr1 = (rad1 * 180) / pi;
+
+	printf("\n\n Ответы\n\n Значение угла в радианах = %f\n\n Значение угла в градусах %d\n", rad, gr1);
+}
