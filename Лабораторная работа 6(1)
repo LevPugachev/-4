@@ -1,0 +1,19 @@
+#include <iostream>;
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "rus");
+	int a, b, z, v;
+	cout << "\n\n Задание 1\n\n Введите значение А = ";
+	scanf_s("%d", &a);
+	cout << " Введите значение В = ";
+	scanf_s("%d", &b);
+
+	v = a;
+	z = b;
+
+	a = z;
+	b = v;
+
+	printf("\n\n Задание 1 \n\n Ответы \n\n А = %d\n\n B = %d\n\n", a, b);
+
+}
