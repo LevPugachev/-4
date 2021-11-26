@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int m, n, k, v;
+	k = 1024;
+	float b;
+	cout << "Количество Байт: ";
+	scanf_s("%d", &m);
+	v = m;
+
+	if (v % 1024 == 0) {
+		n = m / 1024;
+	}
+	else {
+		n = m / 1024 + 1;
+	}
+	cout << " число килобайт = " <<n ;
+}
