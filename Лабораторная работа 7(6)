@@ -1,0 +1,40 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "rus");
+    int A1, B1, C1, A2, B2, C2;
+    float x, D, y;
+
+    cout << "\n\n Задание 6 \n\n Введите А1 ";
+    scanf_s("%d", &A1);
+
+    cout << " Введите В1 ";
+    scanf_s("%d", &B1);
+
+    cout << " Введите С1 ";
+    scanf_s("%d", &C1);
+
+    cout << " Введите А2 ";
+    scanf_s("%d", &A2);
+
+    cout << " Введите В2 ";
+    scanf_s("%d", &B2);
+
+    cout << " Введите С2 ";
+    scanf_s("%d", &C2);
+
+    D = A1 * B2 - A2 * B1;
+
+    x = (C1 * B2 - C2 * B1) / D;
+    y = (A1 * C2 - A2 * C1) / D;
+
+    if ((x = -0) or (y = -0)) {
+        x = 0;
+        y = 0;
+    }
+
+    printf("\n\n Ответы \n\n Задание 6 \n\n x = %f \n\n y = %f \n", x, y);
+    return 0;
+}
