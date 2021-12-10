@@ -1,0 +1,20 @@
+#include <iostream>
+#include <stdio.h>
+#include <math.h>
+
+
+using namespace std;
+int main(void)
+{
+    setlocale(LC_ALL, "rus");
+    float x;
+    
+    cout << "\n\n Задание 5 \n\n Найти значение функции \n\n y = 4(x-3)^6 - 7(x-3)^3 + 2 \n\n X = ";
+    cin >> x;
+
+    float y = 4 * (x - 3) * (x - 3) * (x - 3) * (x - 3) * (x - 3) * (x - 3) - 7 * (x - 3) * (x - 3) * (x - 3) + 2;
+
+    printf("\n\n Ответ \n\n y = %f \n", y);
+
+    return 0;
+}
