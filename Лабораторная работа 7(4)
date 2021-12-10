@@ -1,0 +1,22 @@
+#include <iostream>;
+using namespace std;
+int main()
+{
+    setlocale(LC_ALL, "rus");
+    int V1, V2, S, T;
+    cout << "\n\n Задание 4 \n\n введите скорость первого ";
+    scanf_s("%d", &V1);
+
+    cout << " Введите скорость второго ";
+    scanf_s("%d", &V2);
+
+    cout << " Введите растояние между ними ";
+    scanf_s("%d", &S);
+
+    cout << " Введедите время ";
+    scanf_s("%d", &T);
+
+    printf("\n\n Ответ \n\n Задание 4 \n\n Расттояние через время Т = %d \n", S + V1 * T + V2 * T);
+
+    return 0;
+}
