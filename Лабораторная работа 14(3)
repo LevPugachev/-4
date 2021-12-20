@@ -1,0 +1,25 @@
+
+# include <iostream>
+# include <windows.h>
+# include <cmath>
+
+using namespace std;
+
+int main()
+
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+
+	int N;
+	int K = 0;
+	int S = 1;
+	cout << "\n\n Задание 4 \n\n Введите N(N>1): ";
+	cin >> N;
+	while (S <= N) {
+		++K;
+		S += K;
+	}
+	cout << "\n\n Задание 3 \n\n Наименьшее из целых чисел K, для которых сумма 1 + 2 + . . . + K:" << K << endl;
+
+}
