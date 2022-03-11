@@ -1,0 +1,72 @@
+include <iostream>
+#include <stdio.h>
+using namespace std;
+int main()
+{
+	setlocale(LC_ALL, "rus");
+	int f, s, p, f1, s1, p1; //f -фунты, s -шиллинги, p -пенсы
+	char a = '.',b, n = '.'; //b - для свитч
+	do
+	{
+		a = n;
+		std::cout << " Введите количество перых фунтов, шиллингов и пенсов \n";
+		std::cin >> f >> s >> p;
+		std::cout << " Первая сумма " << f << a << s << a << p;
+		std::cout << "\n Введите количество вторых фунтов, шиллингов и пенсов \n";
+		std::cin >> f1 >> s1 >> p1;
+		std::cout << " Вторая сумма " << f1 << a << s1 << a << p1;
+		while ((s >= 20 || p >= 12) || (s1 >= 20 || p1 >= 12))
+		{
+			if (s >= 20 || p >= 12)
+			{
+				std::cout << " Некорректное значение первой суммы, шиллингов не более 20, пенсов не более 12, повторите попытку \n";
+				cin >> f >> s >> p;
+				std::cout << " Первая сумма" << f << a << s << a << p;
+			}
+			if (s1 >= 20 || p1 >= 12)
+			{
+				std::cout << " Некорректное значение второй суммы, шиллингов не более 20, пенсов не более 12, повторите попытку \n";
+				std::cin >> f1 >> s1 >> p1;
+			}
+		}
+		switch (b)
+		{
+		case '+':
+			f = f + f1;
+			if (p + 1 >= 12) { s = s + 1; p = p + p1 - 12; }
+			else p = p + p1;
+			if (s + s1 >= 20) { f = f + 1; s = s + s1 - 20; }
+			else s = s + s1;
+			std::cout << " Сумма равна " << f << a << s << a << p << endl << "Еще раз? y/n: ";
+			break;
+		case '-':
+			f = f - f1;
+			if (p < p1) { s = s - 1; p = p + 12 - p1; }
+			else p = p - p1;
+			if (s < s1) { f = f - 1; s = s + 20 - s1; }
+			else s = s - s1;
+			std::cout << " Разность равна " << f << a << s << a << p << endl << " Еще раз? y/n: ";
+			break;
+			if ((f != f1) and (s1 != s) and (p != p1)) {
+		case '*':
+			f = f * f1;
+			if (p * p1 >= 12) { s = s + p * p1 / 12; p = p * p1 % 12; }
+			else p = p * p1;
+			if (s * s1 >= 20) { f = f + s * s1 / 20; s = s * s1 % 20; }
+			else s = s * s1;
+			std::cout << " Производное сумм равно " << f << a << s << a << p << endl << " Еще раз? y/n: ";
+			break;
+			}
+			if ((f != f1) and (s1 != s) and (p != p1)) {
+		case '/':
+			f = f / f1;
+			s = s / s1;
+			p = p / p1;
+			std::cout << " Производное сумм равно " << f << a << s << a << p << endl << " Еще раз? y/n: ";
+			break;
+			}
+		}
+		getchar();
+	} while (n = getchar() == 'y');
+	return 0;
+}
