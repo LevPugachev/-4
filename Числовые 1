@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "rus");
+	std::cout << " Уравнение F(X) = X^2-2*cos(X)+1 \n";
+	float a = 0, b = 1, b1 = 1, a1 = 0; // концы отрезков
+	float c = 0, k; //половина отрезка
+	float fa, fa1, fb, fb1; //корни уравнений
+	int i = 1, n = 10;
+	char f; // для продолжения вычислений
+	for (i; i <= n; i++) {
+		if (i == 1) {
+			fa = pow(a, 2) - 2 * cos(a) + 1;
+			std::cout << " Итерация №" << i << " корень " << fa;
+		}
+		if (i > 1) {
+			c = (c + b1) / 2;
+			if (a1 * c < 0)
+				b1 = a1;
+			else
+				b1 = b1;
+			fa1 = pow(c, 2) - 2 * cos(c) + 1;
+			std::cout << " Итерация №" << i << " корень " << fa1;
+		}
+		std::cout << " продолджить вычисления?(y/n) ";
+		std::cin >> f;
+		if (f == 'n')
+			return 0;
+	}
+}
