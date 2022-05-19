@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "rus");
+	std::cout << " Уравнение F(X) = X^2-2*cos(X)+1 ";
+	int i = 1, n = 20; //для подсчёта
+	char a; //для подсчёта итераций
+	float a1 = 0.0, b = 1.0; //концы отрезка
+	float c;
+	char m; //для ввода точки с запятой
+	char m1; //для ввода закрывающей скобки
+	float fa; //уравнение F(a)
+	float fb; //уравнение F(b)
+	for (i; i <= n; i++) {
+		do {
+			c = a1;
+			fa = pow(a1, 2) - 2 * cos(a1) + 1;
+			a1 = (a1 + b) / 2; // нахождение половины отрезка
+			if (a1 * c > 0)
+				b = a1;
+			else
+				b = b;
+			fa = pow(a1, 2) - 2 * cos(a1) + 1;
+			fb = pow(b, 2) - 2 * cos(b) + 1;
+			std::cout << "\n Итераци №" << i << " корень уравнения: " << fa;
+			std::cout << "\n Продолжить вычисления?(y/n) ";
+			std::cin >> a; //для дальнеших вычислений или отвемы
+			while (a == 'n')
+				return 0;
+		} while (a == 'n');
+	}
+}
