@@ -1,0 +1,65 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "rus");
+	std::cout << "\n Метод дихотомии \n";
+	std::cout << " Уравнение F(X) = X^2-2*cos(X)+1 \n";
+	char x, x1; // для ввода концов отрезка
+	float fc, fa;
+	float b, a, e; // концы отрезков, точность
+	float c = 0;
+	int i = 1; //для подсчёта итераций
+	char f; // для продолжения вычислений
+	std::cout << " Введите концы отрезков(Например [10;-10] \n ";
+	std::cin >> x >> a >> x1 >> b >> x;
+	std::cout << " Введите точность ";
+	std::cin >> e;
+		while (((b - a) / 2) > e) {
+			c = (a + b) / 2;
+			fc = pow(c, 2) - 2 * cos(c) + 1;
+			fa = pow(a, 2) - 2 * cos(a) + 1;
+			if ((fa * fc) < 0) {
+				a = a;
+				b = c;
+			}
+			else {
+				a = c;
+				b = b;
+			}
+			std::cout << "\n Итерация №" << i << " корень " << c;
+			i++;
+		}
+}
+
+
+
+#include <iostream>
+#include <iomanip>
+using namespace std;
+int main() {
+	setlocale(LC_ALL, "rus");
+	int i = 1; // для подсчёта итераций
+	float x, x2, k = 0.2715, x1; //x, x2 - начало\конец отрезка, k - число на которое умножается, x1 - для дальнейших вычислений
+	float fx;
+	char a, b; // для ввода отрезков
+	float e; // точность
+	std::cout << "\n Метод простых итераций \n";
+	std::cout << " Уравнение F(X) = X^2-2*cos(X)+1 \n";
+	std::cout << " Введите концы отрезков(Например [10;-10] \n ";
+	std::cin >> a >> x >> b >> x2 >> a;
+	std::cout << " Введите точность ";
+	std::cin >> e;
+	while (abs(k - x2)>e) {
+		fx = pow(x, 2) - 2 * cos(x) + 1;
+		x1 = x - k * (pow(x, 2) - 2 * cos(x) + 1);
+		x = x1;
+		std::cout << "\n Итерация №" << i << " корень " << x1;
+		i++;
+		char p;
+		std::cout << "\n Продолжить вычисления? (y/n) ";
+		std::cin >> p;
+		if (p == 'n')
+			return 0;
+	}
+}
