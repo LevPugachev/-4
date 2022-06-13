@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+double f(double x) {
+	return (sqrt(1 + 5 * log(x) / x));
+}
+int main() {
+	setlocale(LC_ALL, "rus");
+	double x1=111111, x= 1111, n, e;
+	double s = 0;
+	long double i, h;
+	int a = 1, b = 99;
+	int i1 = 1;
+	cout << "\n n = ";
+	cin >> n;
+	h = (b - a) / n;
+	x = f(x) * h;
+	i = 2 / 15 * pow((5 * log(i1) + 1), 3 / 2);
+	cout << " Введите точность ";
+	cin >> e;
+	cout << "\n Итерация №" << i1 << " сумма площадей " << s << " значение интеграла " << i;
+	i1++;
+	while (h > i) {
+		while (abs(x1 - x) > e) {
+			i = 2 / 15 * pow((5 * log(i1) + 1), 3 / 2);
+			x1 = x;
+			h /= n;
+			x = f(x) * h;
+			s += abs(x1);
+			cout << "\n Итерация №" << i1 << " корень " << x1 << " сумма площадей " << s << " значение интеграла " << i;
+			i1++;
+		}
+	}
+}
