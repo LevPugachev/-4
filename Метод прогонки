@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+int main() {
+    const int N = 100;
+    std::vector<std::vector<double>> slay(N, std::vector<double>(N));
+    std::vector<double> matB(N);
+    slay[0][0] = 2;
+    for (int i = 0; i < N; ++i) {
+        slay[i][i] = 2;
+        matB[i] = 140;
+        if (i > 0)
+            slay[i][i - 1] = 1;
+        if (i < N - 1)
+            slay[i][i + 1] = 1;
+    }
+
+    int N1 = N - 1;
+    double y;
+    std::vector<double> a(N), B(N), result(N);
+    y = slay[0][0];
+    a[0] = -slay[0][1] / y;
+    B[0] = matB[0] / y;
+    for (int i = 1; i < N1; i++) {
+        y = slay[i][i] + slay[i][i - 1] * a[i - 1];
+        a[i] = -slay[i][i + 1] / y;
+        B[i] = (matB[i] - slay[i][i - 1] * B[i - 1]) / y;
+    }
+    result[N1] = (matB[N1] - slay[N1][N1 - 1] * B[N1 - 1]) / (slay[N1][N1] + slay[N1][N1 - 1] * a[N1 - 1]);
+    for (int i = N1 - 1; i >= 0; i--) {
+        result[i] = a[i] * result[i + 1] + B[i];
+    }
+
+    for (double i : result)
+        std::cout << i << "\n";
+    return 0;
+}
