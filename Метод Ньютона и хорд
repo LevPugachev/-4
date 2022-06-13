@@ -1,0 +1,61 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+double F(double x){
+	return pow(x,2) - 2 * cos(x) + 1;
+	}
+double f1(double x) {
+	return 2 * x + 2 * sin(x);
+}
+int main() {
+	setlocale(LC_ALL, "rus");
+	// x^2-2*cos(X) + 1
+	int a = 0, b = 1;
+	double x0, e, x= 1000;
+	cout << "\n Метод Ньютона \n Уравнение F(X) = x^2-2*cos(X) + 1 \n";
+	cout << "\n Введите начально приближение x0 = ";
+	cin >> x0;
+	cout << " Введите точность e = ";
+	cin >> e;
+	x = x0 - F(x0) / f1(x0);
+	int i = 1;
+	cout << "\n Итерация №" << i << " корень уравнения " << x;
+	while (abs(x0 - x) > e) {
+		x0 = x;
+		x = x0 - F(x0) / f1(x0);
+		cout << "\n Итерация №" << i << " корень уравнения " << x;
+		i++;
+	}
+	
+}
+
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+double F(double x) {
+	return pow(x, 2) - 2 * cos(x) + 1;
+}
+int main() {
+	setlocale(LC_ALL, "rus");
+	// x^2-2*cos(X) + 1
+	int a = 0, b = 1;
+	char k;
+	double x0, e,x1 , x = 1000;
+	int i = 1;
+	cout << "\n Метод хорд \n Уравнение F(X) = x^2-2*cos(X) + 1 \n";
+	cout << "\n Введите точность e = ";
+	cin >> e;
+	cout << " Введите концы отрезколвв через точку с запятой \n";
+	cin >> a >> k >> b;
+	x1 = b;
+	x0 = a;
+	x = x1 - F(x1) * (x1 - x0) / (F(x1) - F(x0));
+	while (abs(x1 - x) > e) {
+		x1 = x;
+		x = x1 - F(x1) * (x1 - x0) / (F(x1) - F(x0));
+		cout << "\n Итерация №" << i << " корень уравнения " << x;
+		i++;
+	}
+}
