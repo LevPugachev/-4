@@ -1,0 +1,354 @@
+#include <iostream>
+#include <random>
+#include <cmath>
+using namespace std;
+int card1() {
+	int a, k1 = 11, k = 2;
+	a = rand() % (k1 - k) + 3;
+	return a;
+}
+int card2() {
+	int a1, k1 = 11, k = 2;
+	a1 = rand() % (k1 - k) + 3;
+	return a1;
+}
+int main() {
+	setlocale(LC_ALL, "rus");
+	int i = 1, j;
+	char $;
+	std::cout << "\n Введите целую сумму вышей ставки со знаком доллара ";
+	std::cin >> j >> $;
+	int j1 = j;
+	for (i; i < j; i++) {
+		char l, l1, l2, l3, l4, l5, l6, l7, l8, l9, l10;
+		int a, a1, k1 = 11, k = 2, a2, a3, a4, a5;
+		int b, b1, b2, b3, b4, b5;
+		int n = rand() % 4;
+		int sum = 0;
+
+		//подсчёт первой карты круптье
+		int sumK = 0;
+		b = rand() % (k1 - k) + 3;
+		b1 = rand() % (k1 - k) + 3;
+		switch (b) {
+		case 11: l6 = 'Т'; break;
+		case 10: switch (n) {
+		case 1: l6 = 'К'; break;
+		case 2: l6 = 'Д'; break;
+		case 3: l6 = 'В'; break;
+		case 4: l6 = ' '; break;
+		}
+		}
+		std::cout << "\n Карты крупье \n Первая карта ";
+		if (b < 10)
+			std::cout << b;
+		if (b == 11)
+			std::cout << b << "(" << l6 << ")";
+		if ((b == 10) & (n = 4))
+			std::cout << b;
+		if ((b == 10) & (n < 4))
+			std::cout << b << "(" << l6 << ")";
+		sumK = b;
+		std::cout << "\n Вторая карта ? \n Сумма карт у Крупье " << sumK;
+
+		//Подсчёт карт игрока и дальнейшие решения игрока
+		n = rand() % 4;
+		a = rand() % (k1 - k) + 3;
+		a1 = rand() % (k1 - k) + 3;
+		switch (a) {
+		case 11: l = 'Т'; break;
+		case 10: switch (n) {
+		case 1: l = 'К'; break;
+		case 2: l = 'Д'; break;
+		case 3: l = 'В'; break;
+		case 4: l = ' '; break;
+		}
+		}
+		n = rand() % 4;
+		switch (a1) {
+		case 11: l1 = 'Т'; break;
+		case 10: switch (n) {
+		case 1: l1 = 'К'; break;
+		case 2: l1 = 'Д'; break;
+		case 3: l1 = 'В'; break;
+		case 4: l1 = ' '; break;
+		}
+		}
+		std::cout << "\n Ваши карты\n Первая карта ";
+		if (a == 11)
+			std::cout << a << " (" << l << ")";
+		if ((a == 10) and (n < 4))
+			std::cout << a << " (" << l << ")";
+		if ((a == 10) and (n == 4))
+			std::cout << a;
+		if (a < 10)
+			std::cout << a;
+		std::cout << "\n Вторая карта ";
+		if (a1 == 11)
+			std::cout << a1 << " (" << l1 << ")";
+		if ((a1 == 10) and (n < 4))
+			std::cout << a1 << " (" << l1 << ")";
+		if ((a1 == 10) and (n == 4))
+			std::cout << a1;
+		if (a1 < 10)
+			std::cout << a1;
+		if (sum < 22) {
+			sum = a + a1;
+			std::cout << "\n Сумма - " << sum;
+		}
+		int sum1 = sum, sum2;
+		char o;
+		if (sum1 == 21) {
+			std::cout << "\n БЛЭКДЖЕК! ";
+		}
+		if (sum1 < 21) {
+			std::cout << "\n Взять ещё карту или удвоить? \n (d - удвоить ; p - добавить карту, o - закончить) ";
+			std::cin >> o;
+			if (o == 'p') {
+				n = rand() % 4;
+				a2 = card1();
+				switch (a2) {
+				case 11: a2 == 1; break;
+				case 10: switch (n) {
+				case 1: l2 = 'К'; break;
+				case 2: l2 = 'Д'; break;
+				case 3: l2 = 'В'; break;
+				case 4: l2 = ' '; break;
+				}
+				}
+				std::cout << "\n Добавленная карта ";
+				if ((a2 == 10) & (n < 4))
+					std::cout << a2 << " (" << l2 << ")";
+				if (a2 == 11)
+					std::cout << a2;
+				if ((a2 == 10) and (n == 4))
+					std::cout << a2;
+				if (a2 < 10)
+					std::cout << a2;
+				sum += a2;
+				std::cout << "\n Сумма - " << sum;
+				std::cout << "\n Взять ещё карту или удвоить? \n (p - добавить карту, o - закончить) ";
+				std::cin >> o;
+				if (o == 'p') {
+					n = rand() % 4;
+					a3 = card1();
+					switch (a3) {
+					case 11: a3 = 1; break;
+					case 10: switch (n) {
+					case 1: l3 = 'К'; break;
+					case 2: l3 = 'Д'; break;
+					case 3: l3 = 'В'; break;
+					case 4: l3 = ' '; break;
+					}
+					}
+					std::cout << "\n Добавленная карта ";
+					if ((a3 == 10) & (n < 4))
+						std::cout << a3 << " (" << l3 << ")";
+					if (a3 == 11)
+						std::cout << a3;
+					if ((a3 == 10) and (n == 4))
+						std::cout << a3;
+					if (a3 < 10)
+						std::cout << a3;
+					sum += a3;
+					std::cout << "\n Взять ещё карту или удвоить? \n (p - добавить карту, o - закончить) ";
+					std::cin >> o;
+					if (o == 'p') {
+						n = rand() % 4;
+						a4 = card1();
+						switch (a4) {
+						case 11: a4 = 1; break;
+						case 10: switch (n) {
+						case 1: l4 = 'К'; break;
+						case 2: l4 = 'Д'; break;
+						case 3: l4 = 'В'; break;
+						case 4: l4 = ' '; break;
+						}
+						}
+						std::cout << "\n Добавленная карта ";
+						if ((a4 == 10) & (n < 4))
+							std::cout << a4 << " (" << l5 << ")";
+						if (a4 == 11)
+							std::cout << a4;
+						if ((a4 == 10) and (n == 4))
+							std::cout << a4;
+						if (a4 < 10)
+							std::cout << a4;
+						sum += a4;
+						std::cout << "\n Взять ещё карту или удвоить? \n (p - добавить карту, o - закончить) ";
+						std::cin >> o;
+						if (o == 'p') {
+							n = rand() % 4;
+							a5 = card1();
+							switch (a5) {
+							case 11: a5 = 1; break;
+							case 10: switch (n) {
+							case 1: l5 = 'К'; break;
+							case 2: l5 = 'Д'; break;
+							case 3: l5 = 'В'; break;
+							case 4: l5 = ' '; break;
+							}
+							}
+							std::cout << "\n Добавленная карта ";
+							if ((a5 == 10) & (n < 4))
+								std::cout << a5 << " (" << l5 << ")";
+							if (a5 == 11)
+								std::cout << a5;
+							if ((a5 == 10) and (n == 4))
+								std::cout << a4;
+							if (a5 < 10)
+								std::cout << a5;
+							sum += a5;
+							std::cout << "\n Больше карты брать нельзя(( ";
+						}
+						if (o == 'o')
+							return 0;
+					}
+					if (o == 'o')
+						return 0;
+				}
+				if (sum >= 22) {
+					std::cout << "\n Перебор ";
+				}
+			}
+		}
+		
+		//Подсчёт второй карты крупье и вывод двух и боллее и варианты исходов
+		int u1 = 1, u4 = 4, u2 = 2, u3 = 3;
+		b = rand() % (k1 - k) + 3;
+		b1 = rand() % (k1 - k) + 3;
+		n = rand() % 4;
+		switch (b1) {
+		case 11: l7 = 'Т'; break;
+		case 10: switch (n) {
+		case 1: l7 = 'К'; break;
+		case 2: l7 = 'Д'; break;
+		case 3: l7 = 'В'; break;
+		case 4: l7 = ' '; break;
+		}
+		}
+		std::cout << "\n\n Карты крупье \n Первая карта ";
+		if (b < 10)
+			std::cout << b;
+		if (b == 11)
+			std::cout << b << "(" << l6 << ")";
+		if ((b == 10) & (n = 4))
+			std::cout << b;
+		if ((b == 10) & (n < 4))
+			std::cout << b << "(" << l6 << ")";
+		std::cout << "\n Вторая карта ";
+		if (b1 < 10)
+			std::cout << b1;
+		if (b1 == 11)
+			std::cout << b1 << "(" << l7 <<")";
+		if ((b1 == 10) & (n = 4))
+			std::cout << b1;
+		if ((b1 == 10) & (n < 4))
+			std::cout << b1 << "(" << l7 << ")";
+		sumK += b1;
+		std::cout << "\n Сумма карт у крупье " << sumK;
+		if ((sumK < 16) & ((sumK < sum) || (sumK < sum1))) {
+			std::cout << "\n Крупье взял карту ";
+			b2 = rand() % (k1 - k) + 3;
+			n = rand() % 4;
+			switch (b2) {
+			case 11: b2 = 1; break;
+			case 10: switch (n) {
+			case 1: l8 = 'К'; break;
+			case 2: l8 = 'Д'; break;
+			case 3: l8 = 'В'; break;
+			case 4: l8 = ' '; break;
+			}
+			}
+			std::cout << "\n Третья карта ";
+			if (b2 < 10)
+				std::cout << b2;
+			if (b2 == 11)
+				std::cout << b2 << "(" << l8 << ")";
+			if ((b2 == 10) & (n = 4))
+				std::cout << b2;
+			if ((b2 == 10) & (n < 4))
+				std::cout << b2 << "(" << l8 << ")";
+			sumK += b2;
+			std::cout << "\n Сумма карт крупье " << sumK;
+			n = rand() % 2;
+			if (sumK > 16) {
+				if (((sumK > sum1) || (sumK > sum)) & (sumK <= 21))
+					std::cout << "\n Крупье выиграл, у него больше сумма ";
+			}
+			if (sumK < 17) {
+				if (n == 1) {
+					std::cout << "\n Крупье взял карту ";
+					b3 = rand() % (k1 - k) + 3;
+					n = rand() % 4;
+					switch (b3) {
+					case 11: b3 = 1; break;
+					case 10: switch (n) {
+					case 1: l9 = 'К'; break;
+					case 2: l9 = 'Д'; break;
+					case 3: l9 = 'В'; break;
+					case 4: l9 = ' '; break;
+					}
+					}
+					std::cout << "\n Четвёртая карта ";
+					if (b3 < 10)
+						std::cout << b3;
+					if (b3 == 11)
+						std::cout << b3 << "(" << l9 << ")";
+					if ((b3 == 10) & (n = 4))
+						std::cout << b3;
+					if ((b3 == 10) & (n < 4))
+						std::cout << b3 << "(" << l9 << ")";
+					sumK += b3;
+					std::cout << "\n Сумма карт крупье " << sumK;
+					if (((sumK > sum1) || (sumK > sum)) & (sumK > 21))
+						std::cout << "\n Вы выиграли у крупье перебор ";
+					if (((sumK > sum1) || (sumK > sum)) & (sumK <= 21))
+						std::cout << "\n Крупье выиграл, у него больше сумма ";
+					if (((sumK = sum1) || (sumK = sum)) & (sum <= 21))
+						std::cout << "\n Ничья, ваша сумма совпадает с крупье ";
+				}
+				if (n = 2) {
+					if (((sumK < sum1) || (sumK < sum)) & (sumK <= 21))
+						std::cout << "\n Вы выиграли, у крупье меньше сумма ";
+					if (((sum > sum1) || (sumK > sum)) & (sumK <= 21))
+						std::cout << "\n Вы проиграли, у крупье больше сумма";
+				}
+			}
+				if (((sumK = sum1) || (sumK = sum)) & (sum <= 21))
+					std::cout << "\n Ничья, ваша сумма совпадает с крупье ";
+		}
+		if ((sumK > 15) & ((sumK > sum) || (sumK > sum1))) {
+			std::cout << "\n Крупье выиграл ";
+			u1 = 0;
+		}
+			if ((sumK = sum) or (sumK = sum1))
+				std::cout << "\n Ничья, ваша сумма совпадает с крупье";
+			if ((sumK == 21) || (sumK == sum) || (sumK = sum1))
+				std::cout << "\n Ничья, ваша сумма совпадает с крупье";
+			if (sumK > 22)
+				std::cout << "\n Вы выиграли, у крупье перебор ";
+
+		char q;
+		char o1;
+		int j2 = j;
+		if ((a + a1 == 21)) {
+			j2 *= 4;
+			std::cout << "\n Ваша итоговая сумма выиграша " << j2 << "$";
+		}
+		else if (sum > 21) {
+			j /= 2;
+			std::cout << "\n Ваша итоговая сумма выиграша " << j << "$";
+		}
+		else if (sum <= 21) {
+			j *= 2;
+			std::cout << "\n Ваша итоговая сумма выиграша " << j << "$";
+		}
+		std::cout << "\n Продолжить игру? Да(y), Нет(n) ";
+		std::cin >> q;
+		while (q == 'n') {
+			std::cout << "\n Спасибо за игру, ждём вас снова! \n\n\n";
+			return 0;
+		}
+	}
+}
