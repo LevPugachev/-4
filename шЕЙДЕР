@@ -1,0 +1,54 @@
+Shader "Unlit/3"
+{
+    Properties
+    {
+        _Color("Color", Color) = (0,0,0,1)
+        _MainTex("Main Texture", 2D) = "white"{}
+
+    }
+        Subshader
+    {
+        Tags{"RenderType" = "Transparent" = "Queue" = "Transparent" }
+
+        Blend SrcAlphaOneMinusSrcAlpha
+        ZWhite off
+
+        Pass {
+        CGPRO
+#pragma exclude_renderers d3d11
+            #include "UnityCG.cginc"
+            #pragma vertex vert
+            #pragma fragment frag
+
+            sampler2D _MainText;
+        float4 _MAinText_ST;
+        float4 _Color;
+
+        struct appdata {
+            float4 vertex : POSITION;
+            float2 uv.TEXTCOORD0;
+        };
+
+        struct v2f {
+            float4 position : SV_POSITION;
+            float2 uv.TEXTCOORD0;
+        };
+
+        v2f vert(appdata v) {
+            v2f o;
+            o positon = UnityObjectToClipPos(v.vertex);
+            return 0;
+        }
+
+        fixed4 frag(v2f i) :SV_TARGET{
+            fixed4 col = tex2D(_MainTex, i, uv);
+        col *= _Color;
+        return col;
+        }
+
+
+
+        ENDCG
+            }
+    }
+}
