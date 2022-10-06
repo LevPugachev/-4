@@ -1,0 +1,81 @@
+#include <iostream>
+
+using namespace std;
+
+class queue {
+private:
+    int * arr;
+    int tail, head;
+    int sz;
+public:
+    //maybe useless
+
+    queue() {
+        head = tail = 0;
+        sz = 0;
+    }
+
+    queue(int m) {
+        head = tail = 0;
+        arr = new int[m];
+        sz = m;
+    }
+    ~queue() {
+        delete[] arr;
+    }
+
+    //maybe useless
+    void resize(int m) {
+        arr = new int[m]; // for empty constructor
+        head = tail = 0;
+        sz = m;
+    }
+
+    void add_item(int item) {
+        if (head == (tail + 1) % sz) {
+            throw std::overflow_error("Queue is full");
+        }
+        else {
+            arr[tail++] = item;
+            tail %= sz;
+        }
+    }
+
+    int extract_item() {
+        if (head == tail) {
+            throw std::underflow_error("Queue is empty");
+        }
+        else {
+            int res = arr[head++];
+            head %= sz;
+            return res;
+        }
+    }
+
+};
+
+int main() {
+    int N;
+    int r;
+    std::cout « "\n Count of elements in queue: ";
+    std::cin » N;
+    queue q(N);
+    do {
+        std::cout « "\n Enter 1 for push, 0 for pop or 2 for exit: ";
+        std::cin » r;
+        if (r == 2) {
+            break;
+        } else if (r == 1) {
+            std::cout « "\n Enter value: ";
+            int znach;
+            std::cin » znach;
+            q.add_item(znach);
+        } else if (r == 0) {
+            std::cout « "\n Value is: " « q.extract_item() « "\n";
+        }
+        else {
+            std::cout « "\n Unknown command";
+        }
+    } while (true);
+    return 0;
+}
