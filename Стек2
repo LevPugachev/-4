@@ -1,0 +1,62 @@
+#include <iostream>
+
+using namespace std;
+
+class stack {
+private:
+    int *arr;
+    int top;
+    int sz;
+public:
+    stack(int m) {
+        top = -1;
+        sz = m;
+        arr = new int[m];
+    }
+
+    ~stack() {
+        delete[] arr;
+    }
+
+    void push(int a) {
+        if (top == sz - 1) {
+            throw std::overflow_error("Stack is full");
+        } else {
+            arr[++top] = a;
+        }
+    }
+
+    int pop() {
+        if (top >= 0) {
+            return arr[top--];
+        } else {
+            throw std::underflow_error("Stack is empty");
+        }
+    }
+};
+
+int main() {
+    int N;
+    int r;
+    std::cout « "\n Count of elements in stack: ";
+    std::cin » N;
+    stack st(N);
+    do {
+        std::cout « "\n Enter 1 for push, 0 for pop or 2 for exit: ";
+        std::cin » r;
+        if (r == 2) {
+            break;
+        } else if (r == 1) {
+            std::cout « "\n Enter value: ";
+            int znach;
+            std::cin » znach;
+            st.push(znach);
+        } else if (r == 0) {
+            std::cout « "\n Value is: " « st.pop() « "\n";
+        }
+        else {
+            std::cout « "\n Unknown command";
+        }
+    } while (true);
+    return 0;
+}
